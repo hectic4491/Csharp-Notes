@@ -424,6 +424,7 @@ comment
       string result = (time < 18) ? "Good day." : "Good evening.";
       Console.WriteLine(result);
 
+
       // ## Switch
       /*
       Use the switch statement to select one of many code blocks to be
@@ -442,8 +443,276 @@ comment
           break;
       }
 
-
+      -The 'switch' express is evaluated once.
+      -The value of the expression is compared with the values of each
+      case.
+      -If there is a match, the associated block of code is executed.
+      -The break and default keywords will be described later in this
+      chapter.
       */
+      int dayOfTheWeek = 4;
+      switch (dayOfTheWeek)
+      {
+        case 6:
+          Console.WriteLine("Today is Saturday.");
+          break;
+        case 7:
+          Console.WriteLine("Today is Sunday.");
+          break;
+        default:
+          Console.WriteLine("Looking forward to the Weekend.");
+          break;
+      }
+      // Output: "Looking forward to the Weekend."
+
+
+      // ## While Loops
+      /*
+      Loops can execute a block of code as long as a specified condition
+      is reached. Loops are handy because they save time, reduce errors, and they
+      make code more readable.
+
+      # While Loop:
+      The While loop loops through a block of code as long as specified
+      condition is True:
+
+      while (condition)
+      {
+      // Code block to be executed.
+      }
+      */
+      i = 0;
+      while (i < 5)
+      {
+        Console.WriteLine(i);
+        i++;
+      }
+      /*
+      # Do/While Loops
+      The Do/While look is a variant of the while loop. This loop will
+      execute the code block once, before checking if the condition is
+      true, then it will repeat the loop as long as the condition is true.
+
+      do
+      {
+      // code block to be executed/
+      } 
+      while (condition);
+      */
+      i = 0;
+      do
+      {
+        Console.WriteLine($"This is i: {i}. This is i squared {i*i}");
+        i++;
+      }
+      while (i < 5);
+
+      // ## For Loop
+      /* 
+      When you know exactly how many times you want to loop through a 
+      block of code, use the 'for' loop instead of a 'while' loop.
+
+      for (statement 1; statement 2; statement 3)
+      {
+      // code block to be executed
+      }
+
+      statement 1: is executed (one time) before the execution of the 
+        code block.
+      statement 2: defines the condition for executing the code block.
+
+      statemenr 3: is executed (every time) after the code block has been
+        executed.
+
+      e.g.:
+      */
+      for (int n = 0; n < 5; n++)
+      {
+        Console.WriteLine($"This is n: {n}");
+      }
+      /*
+      # foreach Loops
+      There is also a foreach loop, which is used exclusively to loop
+      through elements in an array (or other data sets):
+
+      foreach (type variableName in arrayName)
+      {
+      // code block to be executed
+      }
+
+      The following example outputs all elements in the cars array, using
+      a foreach loop:
+      */
+      string[] cars = {"volvo", "BMW", "Ford", "Mazda"};
+      foreach (string c in cars)
+      {
+      Console.WriteLine(c);
+      }
+      
+      // ## Break and Continue
+      /*
+      # Break
+      You have already seen the 'break' statement used in an earlier 
+      chapter of this tutorial. It was used to "jump out" of a 'switch'
+      statement.
+
+      The 'break' statement can also be used to jump out of a loop.
+      This example jumps out of the loop when i is equal to 4:
+      */
+      for (int m = 0; m < 10; m++)
+      {
+        if (m == 4)
+        {
+          break;
+        }
+        Console.WriteLine(m);
+      }
+      /*
+      # Continue
+      The 'continue' statement breaks one iteration (in the loop), if
+      a specified condition occurs, and continues with the next iteration
+      in the loop.
+
+      This example skips the value of 4:
+      */
+      for (int t = 0; t < 10; t++)
+      {
+        if (t == 6)
+        {
+          continue;
+        }
+        Console.WriteLine($"This is t: {t}");
+      }
+      /*
+      You can also use 'break' and 'continue' in while loops:
+      */
+      i = 0;
+      while (i < 10)
+      {
+        Console.WriteLine(i);
+        i++;
+        if (i == 9)
+        {
+          break;
+        } else if (i % 2 == 0)
+        {
+          Console.WriteLine($"{i} is even.");
+        }
+      }
+
+      // ## Arrays
+      /*
+      Create an Array:
+      Arrays are used to store multiple values in a single variable,
+      instead of declaring separate variables for each value.
+
+      To declare an array, define the variable types with square
+      brackets:
+
+      string[] cars;
+      int[] grades;
+
+      We have now declared a variable that holds an array of strings.
+      To insert values to it, we can use an array literal - place the
+      values in a comma-separated list, inside curly braces. We access
+      elements of an array by passing the index in the square brackets.
+      */
+      string[] myCars ={"Volvo", "BMW", "Ford", "Mazda"};
+      Console.WriteLine(myCars); // -> System.String[]
+      Console.WriteLine(myCars[0]); // -> Volvo
+      /*
+      To create an array of integers, you could write:
+      */
+      int[] myGrades = {90, 88, 95, 100};
+      Console.WriteLine(myGrades); // -> System.Int32[]
+      Console.WriteLine(myGrades[3]); // -> 100
+      myGrades[3] = 99; // Changing value of a specific element.
+      /*
+      # Array Length.
+      To find out how many elements an array has, use the 'Length' 
+      property.
+      */
+      Console.WriteLine(myGrades.Length); // -> 4
+      /*
+
+      # Other Ways to Create an Array.
+      If you are familiar with C#, you might have seen arrays created with
+      the 'new' keyword, and perhaps you have seen arrays with a specified
+      size as well. In C#, there are different ways to create an array:
+      */
+
+      // Create an array of four elements, and add values later
+      string[] pets = new string[4];
+
+      // Create an array of four elements and add values right away
+      string[] trees = new string[4] {"Oak", "Shipmast Locust", "Willow", "Birch"};
+      
+      // Create an array of four elements without specifying the size
+      string[] colors = new string[] {"Blue", "Red", "Green", "Red"};
+
+      // Create an array of four elements, omitting the new keyword,
+      // and without specifying the size
+      string[] places = {"Beach", "Mountain", "River"};
+      
+      /*
+      It is up to you which option you choose. In our tutorial, we will
+      often use the last option, as it is faster and easier to read.
+
+      However, you should note that if you declare an array and initialize
+      it later, you have to use the 'new' keyword.
+      */
+
+      /*
+      # Loop Through Arrays
+      You can loop through the array elements with the 'for' loop, and
+      use the Length property to specify how many times the loop should
+      run.
+
+      The following example outputs all elements in the cars array:
+      */
+      string[] carModels = {"Volvo", "BMW", "Ford", "Mazda"};
+      for (i = 0; i < carModels.Length; i++)
+      {
+        Console.WriteLine(cars[i]);
+      }
+      
+      /*
+      # foreach Loop
+      There is also a foreach loop, which is used exclusively to loop
+      through elements in an array:
+      */
+      // foreach (Type variableName in arrayName)
+      // {
+      //   // code block to be expected
+      // }
+      /*
+      The following example outputs all elements in the cars array,
+      using a foreach loop:
+      */
+      string[] animals = {"Dog", "Cat", "Bunny", "Rhino"};
+      foreach (string l in animals)
+      {
+        Console.WriteLine(l);
+      }
+      /*
+      The example above can be read like this: For each string element
+      (called l) in animals, print out the value of l.
+
+      If you compare the 'for' loop and 'foreach' loop, you will see that
+      the 'foreach' method is easier to write, it does not require a
+      counter (using the 'Length' property), and it is more readable.
+      */
+
+      /*
+      # Sort Arrays
+      There are many array methods available, for example Sort(), which
+      sorts an array alphabetically or in an ascending order:
+      
+      */
+      
+      
+
+
     }
   }
 }
