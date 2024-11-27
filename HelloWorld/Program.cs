@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using System.Security.Principal;
 
 namespace HelloWorld
@@ -38,6 +39,7 @@ comment
       Console.WriteLine("But this one will.");
 
 
+      // ### Syntax
       // ## Variables
       /*
       In C#, there are different types of variables, defined with
@@ -775,7 +777,7 @@ comment
       }
       
 
-      // ## Methods
+      // ### Methods
       /*
       A 'method' is a block of code which only runs when it is called.
       You can pass data, known as parameters, into a 'method'.
@@ -795,7 +797,22 @@ comment
     // in the Main() method scope.
     MyMethod(); // "Hello from MyMethod!"
 
+    ListPeople("Liam", 5);
+    ListPeople("Jenny", 8);
+    ListPeople("Anja", 31);
+
+    int answer = MyAddition(10, 5);
+    Console.WriteLine(answer); // 15;
+    string[] brothers = {"Alex", "Bob", "Chris"};
+    ThisArgMethod(brothers);
+
+    Car myCarObject = new Car();
+    Console.WriteLine(myCarObject.color);
+
+    Car myCarObject_2 = new Car();
+
     }
+
     static void MyMethod()
     // Here we make a method outside of the Main() block scope.
     /*
@@ -807,11 +824,192 @@ comment
 
     void // means that this method does not have a return value. You will
     learn more about return values later in this chapter.
-
     */
     {
       Console.WriteLine("Hello from MyMethod!");
       // code to be executed.
+    }
+
+    static void ListPeople(string fname, int age, string country = "USA")
+    /*
+    Information can be passed to methods as parameter. Parameters act as
+    variables inside the method.
+
+    They are specified after the method name, inside the parentheses. You
+    can add as many parameters as you want, just separate them with a
+    comma.
+
+    This following example has a method that takes a 'string' called 
+    fname as parameter. When the method is called, we pass along a first
+    name, which is used inside the method to print the full name.
+    We can have multiple parameters. When a parameter is passed to the
+    method, we refer to is as an argument.
+    fname: parameters.
+    age: parameters.
+    "John": argument.
+    14: argument.
+
+    You can also use a default parameter value, by using the equals sign.
+    A parameter with a default value is known as an "optional parameter."
+
+    */
+    {
+      Console.WriteLine(fname + " is " + age + " from " + country);
+    }
+    
+
+    // ## Return Values
+    /*
+    In the previous sections, we used the 'void' keyword in all examples,
+    which indicate that the method should not return a value.
+
+    In you want the method to return a value, you can use a primitive data
+    type (such as int or double) instead of 'void', and use the 'return'
+    keyword inside the method:
+    */
+    static int MyAddition(int x, int y)
+    {
+      return x + y;
+    }
+
+    // ## Named Arguments
+    /*
+    It is also possible to send arguments with the key: value syntax.
+    That way, the order of the aguments does not matter.
+    */
+    static void ThisMethod(string child1, string child2, string child3)
+    {
+      Console.WriteLine("The youngest child is: " + child3);
+    }
+    static void ThisArgMethod(string[] args)
+    {
+      string child1 = args[0];
+      string child2 = args[1];
+      string child3 = args[2];
+      ThisMethod(child1, child2, child3);
+    }
+
+    // ## Method Overloading
+    /*
+    With Method Overloading, multiple methods can have the same name with
+    different parameters:
+    */
+    static int AddMethod(int x, int y)
+    {
+      return x + y;
+    }
+    static double AddMethod(double x, double y)
+    {
+      return x + y;
+    }
+    static float AddMethod(float x, float y)
+    {
+      return x + y;
+    }
+    /*
+    Note** Multiple methods can have the same name as long as the number
+    and/or type of parameters are different.
+    */
+
+
+    // ### Classes
+    //## OOP
+    /*
+    OOP Stands for Object-Oriented Programming.
+
+    Procedural programming is about writing procedures or methods that
+    perform operations on the data, while object-oriented programming
+    is about creating objects that contain both data and methods.
+
+    Object-Oriented Programming has several advantages over procedural
+    programming:
+
+      -OOP is faster and easier to execute
+      -OOP provides a clear structure for the programs
+      -OOP helps to keep the C# DRY (Don't Repear Yourself), and makes
+           the code easier to maintain, modify, and debug.
+      -OOP makes it possible to create full reusable applications with
+           less code and shorter development time.
+
+    What are Classes and Objects?
+    Classes and objects are the two main aspects of object-oriented
+    programming.
+
+    A class is a template for objects, and an object is an instance of
+    a class. When the individual objects are created, they inherit all
+    the variables and methods from the class.
+
+
+    // ## Classes and Objects
+    Everything in C# is associated with classes and objects, along with
+    its attributes and methods. For example: in real life, a car is an
+    object. The car has attributes, such as weight and color, and methods,
+    such as drive and break.
+
+    A class is like an object constructor, or a "blueprint" for creating
+    objects.
+
+    To create a class, use the 'class' keyword:
+    */
+    class Car
+    {
+      public string color = "red";
+      /*
+      When a variable is declared directly in a class, it is often
+      referred to as a field (or attribute).
+
+      It is not required, but it is good practice to start with an 
+      uppercase first letter when naming classes. Also, it is common that
+      the name of the C# file and the class matches, as it makes our code
+      organized. However it is not required (like in Java).
+
+      Note** I added the 'public' access modifier keyword, so that I
+      could access this attribute outside of the class in the earlier
+      Main() method of the 'program' class. (line 809).
+      
+      Creat an Object.
+
+      An object is created from a class. We have already created the class
+      named Car, so now we can use this to create objects.
+
+      To create an object of Car, specify the class name, followed by the
+      object name, and use the keyword 'new':
+
+      Car myCarObject = new Car();
+      Console.WriteLine(myCarObject.color);
+
+      Note: That we use the dot syntax ( . ) to access variables/fields
+      inside a class (myObject.color)
+      */
+    }
+    // Multiple Objects
+    /*
+    You can create multiple objects of one class.
+    You can also create an object of a class and access it in another
+    class. This is often used for better organization of classes (one
+    class has all the fields and methods, while the other class holds
+    the Main() method (i.e. code to be executed)).
+
+    This is done with the public keyword. More on this later.
+  
+
+    // ## Class Members
+    Fields and methods inside classes are often referred to as "Class
+    Members":
+
+    Create an Animal class with three class members: two fields and one
+    method.
+    */
+
+    class Cat
+    {
+      // Class members
+      string color = "brown";
+      int maxSpeed = 20;
+      public void makeSound()
+      {
+        Console.WriteLine($"The {color} cat says: Meow");
+      }
     }
   }
 }
