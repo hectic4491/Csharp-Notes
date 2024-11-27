@@ -1,4 +1,6 @@
-﻿namespace HelloWorld
+﻿using System.Linq;
+
+namespace HelloWorld
 // This is the container for classes and other namespaces.
 
 /*
@@ -707,9 +709,69 @@ comment
       # Sort Arrays
       There are many array methods available, for example Sort(), which
       sorts an array alphabetically or in an ascending order:
-      
       */
-      
+      int[] myNumbers = {12, 4, 2, 11, 16, 9, 1, 7};
+      Array.Sort(myNumbers);
+      foreach (int r in myNumbers)
+      {
+        Console.WriteLine(r);
+      }
+
+      /*
+      # Other Useful Array Methods:
+      Other useful array methods, such as Min, Max, and Sum, can be found
+      in the System.Linq namespace:
+
+      // on the top of the document, near the other imports //
+      using System.Linq
+      */
+      int[] myNumberArray = {5, 1, 8, 9};
+      Console.WriteLine(myNumberArray.Max()); // 9
+      Console.WriteLine(myNumberArray.Min()); // 1
+      Console.WriteLine(myNumberArray.Sum()); // 23
+
+      /*
+      # Multidimensional Arrays
+      In the previous chapter, you learned about arrays, which is also
+      known as 'single dimension arrays.' These are great, and something
+      you will use a lot while programming in C#. However, if you want to
+      store data as a tabular form, like a table with rows and columns,
+      you need to get familiar with multidimensional arrays.
+
+      A multidimensional array is basically an array of arrays.
+
+      Arrays can have any number of dimensions. The most common are
+      two-dimensional arrays (2D).
+
+      Two-Dimensional Arrays:
+      To create a 2D array, add each array within its own set of curly
+      braces, and insert a comma (,) inside the square brackets:
+      */
+      // a single comma specifies a 2D array.
+      int[,] twoDimNumbers = {{1, 4, 2}, {3, 6, 8}};
+      Console.WriteLine(twoDimNumbers[0, 1]); // -> 4
+
+      // two commas specify a 3D array.
+      int[,,] threeDimNumbers = {{{1, 2}, {3, 4}}, {{5, 6}, {7, 8}}};
+      Console.WriteLine(threeDimNumbers[0, 1, 0]); // -> 3
+      /*
+      To loop through a multi-dimensional array, you would need to use
+      nested for (or foreach) loops.
+
+      ** Note: On a multidimensional array, we would use the
+              .GetLength() instead of Length to specify how many
+              times the loop should run:
+      */
+      i = 0;
+      j = 0;
+
+      for (i = 0; i < twoDimNumbers.GetLength(0); i++)
+      {
+        for (j = 0; j < twoDimNumbers.GetLength(1); j++)
+        {
+          Console.WriteLine(twoDimNumbers[i, j]);
+        }
+      }
       
 
 
